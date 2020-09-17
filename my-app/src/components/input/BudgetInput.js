@@ -1,20 +1,22 @@
 import React from 'react';
 import Dropdown from './Dropdown'
 
-const BudgetInput = ({ descValue, budgetValue, onDescChange }) => {
-
-    const handleInput = () => {
-
-    }
+const BudgetInput = ({ descValue, budgetValue, onDescChange, type, onSelectChange, onBudgetSubmit }) => {
 
     return (
         <>
+            <Dropdown 
+                className="add__type"
+                optionArr={['+','-']}
+                onSelectChanges={onSelectChange}
+                value={type}
+            />
             <input 
                 type="text" 
                 className="add__description" 
                 placeholder="Add description" 
                 value={descValue}
-                onChange={onDescChange}
+                onChange={onDescChange} //handler fron App (Parent) component
             />
             <input 
                 type="number" 
@@ -23,8 +25,11 @@ const BudgetInput = ({ descValue, budgetValue, onDescChange }) => {
                 value={budgetValue}
                 //onChange={}
             />
-            <Dropdown />
-            <button onClick={handleInput}>Enter</button>
+            <Dropdown
+                className="add__category"
+                optionArr={['Select Category','Salary','Business','Travel','Automobile','Food','Entertainment']}
+            />
+            <button onClick={onBudgetSubmit}>Enter</button>
         </>
     )
 }

@@ -1,0 +1,13 @@
+.item__description {
+    float: left;
+}
+
+.item {
+    padding: 13px;
+    border-bottom: 1px solid #e7e7e7;
+}
+
+.item__value {
+    float: left;
+    transition: transform 0.3s;
+}

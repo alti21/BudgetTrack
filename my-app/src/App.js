@@ -2,6 +2,7 @@ import React, { useState, useReducer } from 'react';
 import logo from './logo.svg';
 import './App.css';
 import BudgetInput from './components/input/BudgetInput';
+import IncomeOutputList from './components/output/IncomeOutputList';
 import IncomeOutput from './components/output/IncomeOutput';
 
 // initial state
@@ -105,24 +106,84 @@ const App = () => {
     } //INITIAL STATE
   );
 
+  const [incomes, setIncomes] = useState( [{
+      desc: 'desc1',
+      type: '-'
+    },
+    {
+      desc: 'desc2',
+      type: '+'
+    }]); // incomes will be array of income objects/components
   const [description, setDescription] = useState('');
+  const [type, setType] = useState('');
 
-  const handleChange = (event) => {
-    setDescription(event.target.value);
+  const incomeObj = {
+    desc: description,
+    budgetType: type
   }
 
+  let incomeObjArray = [
+    {
+      desc: 'desc1',
+      type: '-'
+    },
+    {
+      desc: 'desc2',
+      type: '+'
+    },
+];
+
+
+  const handleIncomeObjArray = () => {
+    // const incomes = this.state.players.slice(0);
+
+    // incomes.push({
+    //   name: 'Maul',
+    //   id: 26
+    // });
+  
+    // this.setState({
+    //   players: players,
+    // });
+
+
+    setIncomes(incomes.concat(incomeObj));
+    console.log(incomes + "testing");
+  }
+
+  const handleChange = (event) => {  //this handler is called in the child component BudgetInput
+    setDescription(event.target.value);
+    console.log(incomeObj.desc)
+  }
+
+  const handleSelectChange = (event) => {  //this handler is called in the child component BudgetInput
+    setType(event.target.value);
+  }
+
+//make incomeOutput appear when button in BudgetInput is clicked
   return (
     <div className="App">
-      test
+
       <BudgetInput 
         descValue={description}
         onDescChange={handleChange}
-       // budgetValue={}
+        onSelectChange={handleSelectChange}
+        type={type}
+        onBudgetSubmit={handleIncomeObjArray}
       />
 
-      <IncomeOutput 
-        description={description}
-      />
+      {/* <IncomeOutput 
+        obj={incomeObj}
+      /> */}
+
+      {/* <IncomeOutput 
+        desc={description}
+        type={type}
+      /> */}
+
+      <IncomeOutputList 
+        list={incomes}
+      /> 
     </div>
   )
 };

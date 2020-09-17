@@ -1,4 +1,12 @@
+@import './components/input/BudgetInput.css';
+@import './components/output/output.css';
 .App {
   text-align: center;
+}
+
+.clearfix::after {
+  content: "";
+  display: table;
+  clear: both;
 }
 
