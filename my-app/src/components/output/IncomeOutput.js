@@ -19,7 +19,7 @@ import ValueOutput from './ValueOutput';
 //         </>
 //     )
 // }
-const IncomeOutput = ({ desc, type,id }) => {
+const IncomeOutput = ({ desc, type,id, value }) => {
     //id = inc-{id}
         return (
             <>
@@ -27,7 +27,7 @@ const IncomeOutput = ({ desc, type,id }) => {
                     <div className="item__description">{desc}</div>
                         <ValueOutput
                             type={type}
-                            //value={}
+                            value={value}
                         />
                 </div>
             </>

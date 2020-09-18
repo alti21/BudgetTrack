@@ -106,33 +106,16 @@ const App = () => {
     } //INITIAL STATE
   );
 
-  const [incomes, setIncomes] = useState( [{
-      desc: 'desc1',
-      type: '-'
-    },
-    {
-      desc: 'desc2',
-      type: '+'
-    }]); // incomes will be array of income objects/components
+  const [incomes, setIncomes] = useState([{}]); // incomes will be array of income objects/components
   const [description, setDescription] = useState('');
-  const [type, setType] = useState('');
+  const [type, setType] = useState('+');
+  const [value, setValue] = useState('');
 
   const incomeObj = {
     desc: description,
-    budgetType: type
+    budgetType: type,
+    incomeValue: value
   }
-
-  let incomeObjArray = [
-    {
-      desc: 'desc1',
-      type: '-'
-    },
-    {
-      desc: 'desc2',
-      type: '+'
-    },
-];
-
 
   const handleIncomeObjArray = () => {
     // const incomes = this.state.players.slice(0);
@@ -153,11 +136,15 @@ const App = () => {
 
   const handleChange = (event) => {  //this handler is called in the child component BudgetInput
     setDescription(event.target.value);
-    console.log(incomeObj.desc)
   }
 
   const handleSelectChange = (event) => {  //this handler is called in the child component BudgetInput
     setType(event.target.value);
+  }
+
+  const handleValueChange = (event) => {
+    setValue(event.target.value);
+    console.log(incomeObj)
   }
 
 //make incomeOutput appear when button in BudgetInput is clicked
@@ -170,6 +157,8 @@ const App = () => {
         onSelectChange={handleSelectChange}
         type={type}
         onBudgetSubmit={handleIncomeObjArray}
+        budgetValue={value}
+        onValChange={handleValueChange}
       />
 
       {/* <IncomeOutput 

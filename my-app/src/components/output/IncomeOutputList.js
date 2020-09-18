@@ -6,7 +6,7 @@ import IncomeOutput from './IncomeOutput';
 const IncomeOutputList = ({ list }) => {
     return (
         <div>utfudtut
-            {list.map(item => <IncomeOutput id={item.id} type={item.type} desc={item.desc}/>)}
+            {list.map(item => <IncomeOutput id={item.id} value={item.incomeValue} type={item.budgetType} desc={item.desc}  />)}
         </div>
     )
 }

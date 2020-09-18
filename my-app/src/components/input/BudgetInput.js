@@ -1,7 +1,7 @@
 import React from 'react';
 import Dropdown from './Dropdown'
 
-const BudgetInput = ({ descValue, budgetValue, onDescChange, type, onSelectChange, onBudgetSubmit }) => {
+const BudgetInput = ({ descValue, budgetValue, onDescChange, type, onSelectChange, onBudgetSubmit, onValChange }) => {
 
     return (
         <>
@@ -23,6 +23,7 @@ const BudgetInput = ({ descValue, budgetValue, onDescChange, type, onSelectChang
                 className="add__value" 
                 placeholder="Value" 
                 value={budgetValue}
+                onChange={onValChange}
                 //onChange={}
             />
             <Dropdown
