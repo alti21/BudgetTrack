@@ -54,39 +54,18 @@ const budgetReducer = (state, action) => {
 }
 
 
-const addItem = (type, des, val) => {
-  let newItem, ID;
-  //select last id in array
-  //create new ID
-  if(data.allItems[type].length > 0)
-  {
-      ID = data.allItems[type][data.allItems[type].length - 1].id + 1;
-  }
-  else // if no income or expenses
-  {
-      ID = 0;
-  }
-
-  //create new item based on 'inc' or 'exp' type
-  if(type === 'exp')
-  {
-      //newItem = new Expense(ID, des, val); //click to make new component?
-     // newItem = {ID: ID, des: des, val: val};
-  }
-  else if (type === 'inc')
-  {
-     // newItem = new Income(ID, des, val);
-  }
+const useSemiPersistentState = (key, initialState) => {
+ // console.log(JSON.parse(localStorage.getItem(key)));
+  const [value, setValue] = React.useState(
+    localStorage.getItem(key) ? JSON.parse(localStorage.getItem(key)) : initialState
+  );
   
-  //push it into our data structure
-  data.allItems[type].push(newItem);
+  React.useEffect(()=>{
+    localStorage.setItem(key, JSON.stringify(value));
+  }, [value, key])
 
-  //return the new element
-  return newItem;
-}
-
-
-
+  return [value, setValue];
+};
 
 const App = () => {
 
@@ -106,7 +85,8 @@ const App = () => {
     } //INITIAL STATE
   );
 
-  const [incomes, setIncomes] = useState([{}]); // incomes will be array of income objects/components
+  //const [incomes, setIncomes] = useState([{}]); // incomes will be array of income objects/components
+  const [incomes, setIncomes] = useSemiPersistentState('income',[{}]);
   const [description, setDescription] = useState('');
   const [type, setType] = useState('+');
   const [value, setValue] = useState('');
@@ -128,8 +108,6 @@ const App = () => {
     // this.setState({
     //   players: players,
     // });
-
-
     setIncomes(incomes.concat(incomeObj));
     console.log(incomes + "testing");
   }
@@ -151,28 +129,36 @@ const App = () => {
   return (
     <div className="App">
 
-      <BudgetInput 
-        descValue={description}
-        onDescChange={handleChange}
-        onSelectChange={handleSelectChange}
-        type={type}
-        onBudgetSubmit={handleIncomeObjArray}
-        budgetValue={value}
-        onValChange={handleValueChange}
-      />
+      <div className="top">
 
-      {/* <IncomeOutput 
-        obj={incomeObj}
-      /> */}
+        
+      </div>
 
-      {/* <IncomeOutput 
-        desc={description}
-        type={type}
-      /> */}
+      <div className="bottom">
+        <BudgetInput 
+          descValue={description}
+          onDescChange={handleChange}
+          onSelectChange={handleSelectChange}
+          type={type}
+          onBudgetSubmit={handleIncomeObjArray}
+          budgetValue={value}
+          onValChange={handleValueChange}
+        />
 
-      <IncomeOutputList 
-        list={incomes}
-      /> 
+        {/* <IncomeOutput 
+          obj={incomeObj}
+        /> */}
+
+        {/* <IncomeOutput 
+          desc={description}
+          type={type}
+        /> */}
+
+        <IncomeOutputList 
+          list={incomes}
+        /> 
+      </div>
+
     </div>
   )
 };
