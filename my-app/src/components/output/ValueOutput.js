@@ -1,5 +1,5 @@
 import React from 'react';
-import DeleteButton from '../buttons/DeleteButton';
+import Button from '../buttons/Button';
 
 
 
@@ -9,7 +9,7 @@ const ValueOutput = ({type, value}) => {
         <>
             <div className="right clearfix">
                 <div className="item__value">{type} {value}</div>
-                <DeleteButton />
+                <Button />
             </div>
         </>
     )

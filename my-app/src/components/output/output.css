@@ -3,11 +3,30 @@
 }
 
 .item {
+    
     padding: 13px;
     border-bottom: 1px solid #e7e7e7;
 }
 
 .item__value {
-    float: left;
+    float: right;
     transition: transform 0.3s;
+}
+
+.income {
+    background-color: #28B9B5;
+    color: #fff;
+    margin-left: 20px;
+    margin-right: 20px;
+}
+
+.income__list {
+    width: 50vw;
+    
+}
+
+.income__list--title {
+    color:  #28B9B5;
+    font-size: 20px;
+    margin-bottom: 20px;
 }

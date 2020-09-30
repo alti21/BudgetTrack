@@ -1,6 +1,6 @@
 import React from 'react';
 
-const DeleteButton = () => (
+const Button = () => (
     <>
         <div className="item__delete">
             <button className="item__delete--btn">
@@ -10,4 +10,4 @@ const DeleteButton = () => (
     </>
 )
 
-export default DeleteButton;
+export default Button;

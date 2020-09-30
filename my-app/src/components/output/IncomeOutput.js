@@ -23,7 +23,7 @@ const IncomeOutput = ({ desc, type,id, value }) => {
     //id = inc-{id}
         return (
             <>
-                <div className="item clearfix" id={id}>
+                <div className="item clearfix income" id={id}>
                     <div className="item__description">{desc}</div>
                         <ValueOutput
                             type={type}

@@ -4,7 +4,7 @@ import Dropdown from './Dropdown'
 const BudgetInput = ({ descValue, budgetValue, onDescChange, type, onSelectChange, onBudgetSubmit, onValChange }) => {
 
     return (
-        <>
+        <div className="add">
             <Dropdown 
                 className="add__type"
                 optionArr={['+','-']}
@@ -31,7 +31,7 @@ const BudgetInput = ({ descValue, budgetValue, onDescChange, type, onSelectChang
                 optionArr={['Select Category','Salary','Business','Travel','Automobile','Food','Entertainment']}
             />
             <button onClick={onBudgetSubmit}>Enter</button>
-        </>
+        </div>
     )
 }
 

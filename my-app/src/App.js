@@ -1,7 +1,7 @@
 import React, { useState, useReducer } from 'react';
-import logo from './logo.svg';
 import './App.css';
 import BudgetInput from './components/input/BudgetInput';
+import BudgetOutput from './components/output/BudgetOutput';
 import IncomeOutputList from './components/output/IncomeOutputList';
 import IncomeOutput from './components/output/IncomeOutput';
 
@@ -130,7 +130,7 @@ const App = () => {
     <div className="App">
 
       <div className="top">
-
+        <BudgetOutput />
         
       </div>
 
