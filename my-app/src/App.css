@@ -1,5 +1,6 @@
 @import './components/input/BudgetInput.css';
 @import './components/output/output.css';
+@import './components/buttons/Button.css';
 .App {
   text-align: center;
   background-image: linear-gradient( #4CA1AF,rgb(250, 250, 250));

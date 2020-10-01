@@ -2,16 +2,23 @@
     float: left;
 }
 
+.right {
+    float: right;
+}
+
 .item {
     
     padding: 13px;
     border-bottom: 1px solid #e7e7e7;
 }
+.item:hover .item__value { transform: translateX(-10px); }
+.item:hover .item__delete--btn { display: block; }
 
 .item__value {
-    float: right;
+    float: left;
     transition: transform 0.3s;
 }
+
 
 .income {
     background-color: #28B9B5;

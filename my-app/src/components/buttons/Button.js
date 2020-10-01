@@ -1,10 +1,10 @@
 import React from 'react';
 
-const Button = () => (
+const Button = ({buttonType}) => (
     <>
         <div className="item__delete">
-            <button className="item__delete--btn">
-                <i className="ion-ios-close-outline">test</i>
+            <button className={buttonType}>
+                <i className="ion-ios-close-outline"></i>
             </button>
         </div>
     </>

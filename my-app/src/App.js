@@ -128,7 +128,7 @@ const App = () => {
 //make incomeOutput appear when button in BudgetInput is clicked
   return (
     <div className="App">
-
+<link href="http://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css" rel="stylesheet" type="text/css"></link>
       <div className="top">
         <BudgetOutput />
         
