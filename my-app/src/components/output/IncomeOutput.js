@@ -19,7 +19,7 @@ import ValueOutput from './ValueOutput';
 //         </>
 //     )
 // }
-const IncomeOutput = ({ desc, type,id, value }) => {
+const IncomeOutput = ({ desc, type,id, value, handleButton }) => {
     //id = inc-{id}
         return (
             <>
@@ -28,6 +28,7 @@ const IncomeOutput = ({ desc, type,id, value }) => {
                         <ValueOutput
                             type={type}
                             value={value}
+                            handleClick={handleButton}
                         />
                 </div>
             </>

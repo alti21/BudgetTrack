@@ -67,6 +67,12 @@ const useSemiPersistentState = (key, initialState) => {
   return [value, setValue];
 };
 
+// const removeItem = (key) => {
+//   React.useEffect(()=>{
+//     localStorage.removeItem(key);
+//   }, [key])
+// }
+
 const App = () => {
 
   const [budget, dispatchBudget] = useReducer( //budget is current state
@@ -87,17 +93,18 @@ const App = () => {
 
   //const [incomes, setIncomes] = useState([{}]); // incomes will be array of income objects/components
   const [incomes, setIncomes] = useSemiPersistentState('income',[{}]);
+  const [expenses, setExpenses] = useSemiPersistentState('expense',[{}]);
   const [description, setDescription] = useState('');
   const [type, setType] = useState('+');
   const [value, setValue] = useState('');
 
-  const incomeObj = {
+  const budgetObj = {
     desc: description,
     budgetType: type,
     incomeValue: value
   }
 
-  const handleIncomeObjArray = () => {
+  const handleBudgetObjArray = () => {
     // const incomes = this.state.players.slice(0);
 
     // incomes.push({
@@ -108,8 +115,15 @@ const App = () => {
     // this.setState({
     //   players: players,
     // });
-    setIncomes(incomes.concat(incomeObj));
-    console.log(incomes + "testing");
+
+    if(budgetObj.budgetType === '+') {
+      setIncomes(incomes.concat(budgetObj));
+    }
+    else if(budgetObj.budgetType === '-') {
+      setExpenses(expenses.concat(budgetObj));
+    }
+
+    console.log(incomes);
   }
 
   const handleChange = (event) => {  //this handler is called in the child component BudgetInput
@@ -122,7 +136,18 @@ const App = () => {
 
   const handleValueChange = (event) => {
     setValue(event.target.value);
-    console.log(incomeObj)
+    console.log(budgetObj)
+  }
+
+  const removeInc = (index) => {
+    // console.log(JSON.parse(localStorage.getItem("income")));
+     console.log(incomes); //change value of incomes 
+     let arr = JSON.parse(localStorage.getItem("income"));
+     arr.splice(index, 1);
+    // arr = JSON.stringify(arr);
+     console.log(arr);
+     //localStorage.setItem("income", arr);
+     setIncomes(arr)
   }
 
 //make incomeOutput appear when button in BudgetInput is clicked
@@ -140,7 +165,7 @@ const App = () => {
           onDescChange={handleChange}
           onSelectChange={handleSelectChange}
           type={type}
-          onBudgetSubmit={handleIncomeObjArray}
+          onBudgetSubmit={handleBudgetObjArray}
           budgetValue={value}
           onValChange={handleValueChange}
         />
@@ -156,6 +181,7 @@ const App = () => {
 
         <IncomeOutputList 
           list={incomes}
+          removeIncome={(index)=>removeInc(index)}
         /> 
       </div>
 
