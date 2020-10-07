@@ -140,14 +140,9 @@ const App = () => {
   }
 
   const removeInc = (index) => {
-    // console.log(JSON.parse(localStorage.getItem("income")));
-     console.log(incomes); //change value of incomes 
-     let arr = JSON.parse(localStorage.getItem("income"));
-     arr.splice(index, 1);
-    // arr = JSON.stringify(arr);
-     console.log(arr);
-     //localStorage.setItem("income", arr);
-     setIncomes(arr)
+     let items = JSON.parse(localStorage.getItem("income"));
+     items.splice(index, 1);
+     setIncomes(items);
   }
 
 //make incomeOutput appear when button in BudgetInput is clicked
