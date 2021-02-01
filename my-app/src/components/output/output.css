@@ -8,10 +8,10 @@
 
 .item {
     
-    padding: 13px;
+    padding: 10px;
     border-bottom: 1px solid #e7e7e7;
 }
-.item:hover .item__value { transform: translateX(-10px); }
+.item:hover .item__value { transform: translateX(-10px); } 
 .item:hover .item__delete--btn { display: block; }
 
 .item__value {
@@ -19,7 +19,12 @@
     transition: transform 0.3s;
 }
 
+.income__list {
+    width: 50vw;
+    max-width: 475px;
+}
 
+/**********************INCOME**********************/
 .income {
     background-color: #28B9B5;
     color: #fff;
@@ -27,13 +32,35 @@
     margin-right: 20px;
 }
 
-.income__list {
-    width: 50vw;
-    
-}
-
 .income__list--title {
     color:  #28B9B5;
     font-size: 20px;
     margin-bottom: 20px;
+}
+
+/**********************EXPENSE**********************/
+.expense {
+    background-color: #FF5049;
+    color: #fff;
+    margin-left: 20px;
+    margin-right: 20px;
+}
+.expense__list--title {
+    color:  #FF5049;
+    font-size: 20px;
+    margin-bottom: 20px;
+}
+.expense__list { 
+    display: inline-block;
+    width: 50vw;
+    max-width: 475px;
+}
+
+
+.container {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    margin: 60px auto;
+   margin-bottom: 0;
 }

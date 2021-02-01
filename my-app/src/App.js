@@ -3,7 +3,7 @@ import './App.css';
 import BudgetInput from './components/input/BudgetInput';
 import BudgetOutput from './components/output/BudgetOutput';
 import IncomeOutputList from './components/output/IncomeOutputList';
-import IncomeOutput from './components/output/IncomeOutput';
+import ExpenseOutputList from './components/output/ExpenseOutputList';
 
 // initial state
 const data = {
@@ -145,6 +145,12 @@ const App = () => {
      setIncomes(items);
   }
 
+  const removeExp = (index) => {
+    let items = JSON.parse(localStorage.getItem("expense"));
+    items.splice(index, 1);
+    setExpenses(items);
+ }
+
 //make incomeOutput appear when button in BudgetInput is clicked
   return (
     <div className="App">
@@ -173,11 +179,18 @@ const App = () => {
           desc={description}
           type={type}
         /> */}
-
-        <IncomeOutputList 
-          list={incomes}
-          removeIncome={(index)=>removeInc(index)}
-        /> 
+        <div className="container clearfix">
+          <IncomeOutputList 
+            list={incomes}
+            removeIncome={(index)=>removeInc(index)}
+          /> 
+          <ExpenseOutputList
+            list={expenses}
+            removeExpense={(index)=>removeExp(index)}
+          />
+          
+        </div>
+        
       </div>
 
     </div>

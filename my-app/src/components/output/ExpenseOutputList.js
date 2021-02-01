@@ -1,9 +1,9 @@
 import React from 'react';
-import IncomeOutput from './IncomeOutput';
+import ExpenseOutput from './ExpenseOutput';
 
 
 // list will be list of income objects
-const IncomeOutputList = ({ list, removeIncome }) => {
+const ExpenseOutputList = ({ list, removeExpense }) => {
 
     // const handler = (i) => {
     //     return () => {
@@ -16,15 +16,15 @@ const IncomeOutputList = ({ list, removeIncome }) => {
     // }
 
     return (
-        <div className="income__list">
-            <div className="income__list--title">INCOME</div>
-            {list.map((item, index, arr) => <IncomeOutput 
+        <div className="expense__list">
+            <div className="expense__list--title">EXPENSE</div>
+            {list.map((item, index, arr) => <ExpenseOutput 
                                 id={item.id} 
-                                value={item.incomeValue} 
+                                value={item.expenseValue} 
                                 type={item.budgetType} 
                                 desc={item.desc} 
                                // handleButton={handler(index)} 
-                                handleButton={()=>removeIncome(index)}
+                                handleButton={()=>removeExpense(index)}
                                 />
             )}
         </div>
@@ -32,4 +32,4 @@ const IncomeOutputList = ({ list, removeIncome }) => {
 }
 
 
-export default IncomeOutputList;
+export default ExpenseOutputList;
