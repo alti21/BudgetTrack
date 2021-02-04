@@ -20,7 +20,7 @@ const ExpenseOutputList = ({ list, removeExpense }) => {
             <div className="expense__list--title">EXPENSE</div>
             {list.map((item, index, arr) => <ExpenseOutput 
                                 id={item.id} 
-                                value={item.expenseValue} 
+                                value={item.incomeValue} 
                                 type={item.budgetType} 
                                 desc={item.desc} 
                                // handleButton={handler(index)} 

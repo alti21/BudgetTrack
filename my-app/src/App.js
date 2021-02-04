@@ -124,6 +124,7 @@ const App = () => {
     }
 
     console.log(incomes);
+    console.log(expenses);
   }
 
   const handleChange = (event) => {  //this handler is called in the child component BudgetInput
