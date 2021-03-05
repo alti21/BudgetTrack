@@ -1,24 +1,6 @@
 import React from 'react';
 import ValueOutput from './ValueOutput';
 
-
-
-
-//Det=leteButton appears after hovering over income value
-// const IncomeOutput = ({ obj }) => {
-// //id = inc-{id}
-//     return (
-//         <>
-//             <div className="item clearfix" id={obj.id}>
-//                 <div className="item__description">{obj.description}</div>
-//                     <ValueOutput
-//                         type={obj.type}
-//                         //value={}
-//                     />
-//             </div>
-//         </>
-//     )
-// }
 const IncomeOutput = ({ desc, type,id, value, handleButton }) => {
     //id = inc-{id}
         return (
