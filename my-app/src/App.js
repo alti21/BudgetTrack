@@ -5,23 +5,6 @@ import BudgetOutput from './components/output/BudgetOutput';
 import IncomeOutputList from './components/output/IncomeOutputList';
 import ExpenseOutputList from './components/output/ExpenseOutputList';
 
-// initial state
-const data = {
-  allItems: {
-      exp: [],
-      inc: []
-  },
-  totals: {
-      exp: 0,
-      inc: 0
-  },
-  budget: 0,
-  percentage: -1
-};
-
-
-
-    
 
      const calcPercentage = (totalIncome) =>
         {
@@ -40,12 +23,6 @@ const data = {
             return this.percentage;
         }
 
-    
-
-
-
-
-
 const useSemiPersistentState = (key, initialState) => {
  // console.log(JSON.parse(localStorage.getItem(key)));
   const [value, setValue] = React.useState(
@@ -63,14 +40,21 @@ const initialBudget = {
   description: '',
   type: '+',
   key: 'income',
-  value: ''
+  value: 0
 };
 
 const initialState = {
   incomes: [{}],
   expenses: [{}],
-  budgetObj: initialBudget
+  budgetObj: initialBudget,
+  finalBudget: 0
 };
+
+/*
+For total/final budget:
+when you submit an income, add value of the income to total
+when you submit an expense, subtract value of the expense from total
+*/
 
 const budgetReducer = (state, action) => {
   switch(action.type) {
@@ -102,27 +86,21 @@ const budgetReducer = (state, action) => {
           value: action.payload, 
         }
       }
-     // const newValue = action.payload;
-      //return newValue;
     case 'SUBMIT_BUDGET':
-      // I am using spread to clone the object to be safe, might not be 100% neccessary
       const budget = {...state};
       // figure out where to add the current budget object
       const isIncome = budget.budgetObj.type === '+';
+      console.log(state);
+      console.log(state.incomes[0].value);//to print value of 1ST income object
+
       if(budget.budgetObj.description !== '' && budget.budgetObj.value !== '')
       {
         return {
           // here we don't want to concat the whole state into isIncome and isExpense
           incomes: isIncome ? state.incomes.concat(budget.budgetObj) : state.incomes, // maybe add to incomes, setIncomes
           expenses: isIncome ? state.expenses : state.expenses.concat(budget.budgetObj), // maybe add to expenses
+          finalBudget: parseInt(budget.budgetObj.value) + 1,
           budgetObj: initialBudget, // reset budget object
-          // budgetObj: {
-          //   description: action.desc,
-          //   type: '+',
-          //   value: action.value
-          // },
-          //budgetObj: state.budgetObj.description
-          
         }
       }
       else if (budget.budgetObj.description === '') {
@@ -179,22 +157,6 @@ const useSemiPersistantReducer = (key, initialState) => {
 
 const App = () => {
 
-  // const [budget, dispatchBudget] = useReducer( //budget is current state
-  //   budgetReducer,
-  //   {
-  //     allItems: {
-  //       exp: [],
-  //       inc: []
-  //     },
-  //     totals: {
-  //       exp: 0,
-  //       inc: 0
-  //     },
-  //     budget: 0,
-  //     percentage: -1
-  //   } //INITIAL STATE
-  // );
-
   // [value, dispatch] setIncomes is a dispatch method, budgets is the state
   //const [budgets, setBudget] = useSemiPersistantReducer('income',initialState);
   //const [expenses, setExpenses] = useSemiPersistentReducer('expense',initialState);
@@ -217,20 +179,6 @@ const App = () => {
   //   budgetType: '+',
   //   incomeValue: ''
   // }
-
-  /*
-  const budgetReducer = (state, action) => {
-    switch(action.type) {
-      case 'ADD_INCOME_ITEM':
-        return setIncomes(incomes.concat(budgetObj));
-    }
-  }
-  //maybe: change above several lines to usereducer
-  //inside reducer, set income and expense using setIncomes and setExpenses?
-  const [budget, dispatchBudget] = useReducer( //reducer, initial state
-    budgetReducer,
-    initialbudget
-  );*/
   
   /*
   const handleBudgetObjArray = () => {
@@ -251,11 +199,7 @@ const App = () => {
     else if(budgetObj.budgetType === '-') {
       setExpenses(expenses.concat(budgetObj));
     }
-
-    console.log(incomes);
-    console.log(expenses);
   }*/
-
 
   //const handleChange = (event) => {  //this handler is called in the child component BudgetInput
   //  setDescription(event.target.value);
@@ -282,14 +226,10 @@ const App = () => {
 //     setExpenses(items);
 //  }
 
-
-
 // [value, dispatch] setIncomes is a dispatch method, budgets is the state
 const [budgetState, setBudget] = useSemiPersistantReducer(initialState.budgetObj.key,initialState);
 //const [budgetState, setBudget] = useSemiPersistantReducer('expense',initialState);
 const {incomes, expenses, budgetObj, key} = budgetState;
-
-
 
 //make incomeOutput appear when button in BudgetInput is clicked
   return (
@@ -297,7 +237,6 @@ const {incomes, expenses, budgetObj, key} = budgetState;
 <link href="http://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css" rel="stylesheet" type="text/css"></link>
       <div className="top">
         <BudgetOutput />
-        
       </div>
 
       <div className="bottom">
@@ -336,12 +275,9 @@ const {incomes, expenses, budgetObj, key} = budgetState;
           />
           
         </div>
-        
       </div>
-
     </div>
   )
 };
-
 
 export default App;

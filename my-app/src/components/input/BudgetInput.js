@@ -24,7 +24,6 @@ const BudgetInput = ({ descValue, budgetValue, onDescChange, type, onSelectChang
                 placeholder="Value" 
                 value={budgetValue}
                 onChange={onValChange}
-                //onChange={}
             />
             <Dropdown
                 className="add__category"

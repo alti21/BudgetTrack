@@ -6,7 +6,7 @@ const Title = () => {
 
     return (
         <div className="budget__title">
-            <h1>Welcome to Budgety!</h1>
+            <h1>BudgetTrak</h1>
             <p>Available Budget for <CurrentDate /></p>
         </div>
     )
