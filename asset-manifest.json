@@ -1,22 +1,22 @@
 {
   "files": {
     "main.css": "/More-React-Practice/static/css/main.c333ac21.chunk.css",
-    "main.js": "/More-React-Practice/static/js/main.9d27c6e2.chunk.js",
-    "main.js.map": "/More-React-Practice/static/js/main.9d27c6e2.chunk.js.map",
+    "main.js": "/More-React-Practice/static/js/main.e0b6432f.chunk.js",
+    "main.js.map": "/More-React-Practice/static/js/main.e0b6432f.chunk.js.map",
     "runtime-main.js": "/More-React-Practice/static/js/runtime-main.655baf77.js",
     "runtime-main.js.map": "/More-React-Practice/static/js/runtime-main.655baf77.js.map",
-    "static/js/2.939a358a.chunk.js": "/More-React-Practice/static/js/2.939a358a.chunk.js",
-    "static/js/2.939a358a.chunk.js.map": "/More-React-Practice/static/js/2.939a358a.chunk.js.map",
+    "static/js/2.c8ca45da.chunk.js": "/More-React-Practice/static/js/2.c8ca45da.chunk.js",
+    "static/js/2.c8ca45da.chunk.js.map": "/More-React-Practice/static/js/2.c8ca45da.chunk.js.map",
     "index.html": "/More-React-Practice/index.html",
-    "precache-manifest.677b97859537a581b55cfb8b442e0db3.js": "/More-React-Practice/precache-manifest.677b97859537a581b55cfb8b442e0db3.js",
+    "precache-manifest.1d0edc9d4ab6cf738f38e4dc2cc5a05e.js": "/More-React-Practice/precache-manifest.1d0edc9d4ab6cf738f38e4dc2cc5a05e.js",
     "service-worker.js": "/More-React-Practice/service-worker.js",
     "static/css/main.c333ac21.chunk.css.map": "/More-React-Practice/static/css/main.c333ac21.chunk.css.map",
-    "static/js/2.939a358a.chunk.js.LICENSE.txt": "/More-React-Practice/static/js/2.939a358a.chunk.js.LICENSE.txt"
+    "static/js/2.c8ca45da.chunk.js.LICENSE.txt": "/More-React-Practice/static/js/2.c8ca45da.chunk.js.LICENSE.txt"
   },
   "entrypoints": [
     "static/js/runtime-main.655baf77.js",
-    "static/js/2.939a358a.chunk.js",
+    "static/js/2.c8ca45da.chunk.js",
     "static/css/main.c333ac21.chunk.css",
-    "static/js/main.9d27c6e2.chunk.js"
+    "static/js/main.e0b6432f.chunk.js"
   ]
 }
