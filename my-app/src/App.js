@@ -90,8 +90,8 @@ const budgetReducer = (state, action) => {
       const budget = {...state};
       // figure out where to add the current budget object
       const isIncome = budget.budgetObj.type === '+';
-      console.log(state);
-      console.log(state.incomes[0].value);//to print value of 1ST income object
+      //console.log(state);
+      //console.log(state.incomes[0].value);//to print value of 1ST income object
 
       if(budget.budgetObj.description !== '' && budget.budgetObj.value !== '')
       {
