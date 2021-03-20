@@ -1,10 +1,10 @@
 import React from 'react';
-
+import { BsFillXOctagonFill } from "react-icons/bs";
 const Button = ({buttonType, handler}) => (
     <>
         <div className="item__delete">
             <button className={buttonType} onClick={handler}>
-                <i className="ion-ios-close-outline"></i>
+                <i><BsFillXOctagonFill /></i>
             </button>
         </div>
     </>
